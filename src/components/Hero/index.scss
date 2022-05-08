@@ -1,0 +1,56 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Nav
+.hamburger {
+  position: relative;
+  cursor: pointer;
+  height: fit-content;
+  background: transparent;
+  border: none;
+  width: 40px;
+}
+
+.hamburger__bar {
+  height: 2px;
+  background-color: black;
+  margin: 0.3rem 0;
+  width: 30px;
+  &__small{
+    width: 30px;
+  }
+}
+
+.hamburger--expanded {
+  min-height: 6px;
+}
+
+.hamburger--expanded .hamburger__bar {
+  width: 30px;
+  transition: all ease-in 0.2s, transform ease-in 0.2s;
+}
+
+.hamburger--expanded .hamburger__bar:nth-child(1) {
+  transform: rotate(45deg) translateY(calc(0.3rem + 3px));
+}
+
+.hamburger--expanded .hamburger__bar:nth-child(2) {
+  transform: rotate(-45deg) translateY(calc(-0.3rem - 3px));
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Jumbotron
+.btn{
+  border-radius: 11px;
+  backdrop-filter: blur(17.5447px);
+  box-shadow: 0 0.877235px 21.0536px -0.877235px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(112.52deg, rgba(255, 255, 255, 0.4) 8.28%, rgba(255, 255, 255, 0.1) 90.82%);
+
+  &-send_nfts{
+    transform: rotate(-6.42deg);
+  }
+
+  &-start-now{
+    border-radius: 19px;
+  }
+}
