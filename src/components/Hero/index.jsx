@@ -1,5 +1,5 @@
 import './index.scss';
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
 import nftImage from "../../assets/images/image 16.png";
 import ellipse from "../../assets/images/Ellipse 17.png";
 import line from "../../assets/images/Line 3.png";
@@ -10,12 +10,21 @@ function Hero() {
     const[showDropdown, setShowDropdown] = useState(false);
     const toggleDropdown = () => setShowDropdown(!showDropdown);
 
-    useLayoutEffect(()=>{
+    const overFlowDocument = useCallback(() => {
+        const body = document.querySelector('body');
+        showDropdown ? body.classList.add('overflow-hidden'):body.classList.remove('overflow-hidden')
+    },[showDropdown]);
+
+    useEffect(()=>{
         gsap.to(buttonRef.current,
             {
                 rotation: "360"
             })
     },[])
+    useEffect(()=> {
+        overFlowDocument();
+    },[overFlowDocument])
+
      return (
          <div className="hero pb-5 text-white">
              <nav className="py-3.5 sm:px-32">
@@ -57,7 +66,7 @@ function Hero() {
                  </div>
              </nav>
              <div className="grid grid-rows-1 grid-cols-1 md:grid-cols-2 md:grid-rows-1">
-                 <div className="flex justify-start pl-14 pt-16 flex-col">
+                 <div className={`flex justify-start pl-14 pt-16 flex-col ${showDropdown ? '-z-10' : ''}`}>
                      <div ref={buttonRef} className="btn-send_nfts--container">
                          <div className="rope_set__init relative w-2/3">
                              <span className="absolute text-center dot left-8">
