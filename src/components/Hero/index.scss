@@ -11,7 +11,7 @@
 
 .hamburger__bar {
   height: 2px;
-  background-color: black;
+  background-color: white;
   margin: 0.3rem 0;
   width: 30px;
   &__small{
@@ -40,7 +40,6 @@
 //Jumbotron
 .btn{
   border-radius: 11px;
-  backdrop-filter: blur(17.5447px);
   box-shadow: 0 0.877235px 21.0536px -0.877235px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -48,9 +47,27 @@
 
   &-send_nfts{
     transform: rotate(-6.42deg);
+    &--container{
+      position: relative;
+      z-index: 100;
+    }
   }
 
   &-start-now{
     border-radius: 19px;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//RopeSet
+.rope_set{
+  transform: translateY(-23rem);
+
+  &__init{
+    transform: translateY(-22rem);
+
+    & span:last-child{
+      transform: translateY(-28px);
+    }
   }
 }

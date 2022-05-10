@@ -1,5 +1,25 @@
 body, #root{
     font-family: 'Roboto Mono', monospace;
     position: relative;
-    background: linear-gradient(163.35deg, #5F1EEA 12.51%, rgba(234, 0, 196, 0.33) 71.87%), rgba(255, 237, 251, 0.8);
+
+}
+.max-h-99{
+    max-height: 35rem;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #5F1EEA;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 5px;
+}
+*::-webkit-scrollbar-track {
+    background: rgba(255, 237, 251, 0.8);
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #5F1EEA;
+    border-radius: 20px;
 }

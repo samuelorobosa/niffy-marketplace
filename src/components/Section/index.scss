@@ -1,6 +1,5 @@
 .btn {
   border-radius: 11px;
-  backdrop-filter: blur(17.5447px);
   box-shadow: 0 0.877235px 21.0536px -0.877235px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -9,4 +8,8 @@
   &-get_nfts {
     border-radius: 19px;
   }
+}
+
+.nft_bottom{
+  transform: translateY(30px);
 }

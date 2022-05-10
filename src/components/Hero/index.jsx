@@ -1,10 +1,21 @@
 import './index.scss';
-import {useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import nftImage from "../../assets/images/image 16.png";
+import ellipse from "../../assets/images/Ellipse 17.png";
+import line from "../../assets/images/Line 3.png";
+import {gsap} from "gsap";
 
- function Hero() {
-      const[showDropdown, setShowDropdown] = useState(false);
-      const toggleDropdown = () => setShowDropdown(!showDropdown);
+function Hero() {
+    const buttonRef = useRef();
+    const[showDropdown, setShowDropdown] = useState(false);
+    const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+    useLayoutEffect(()=>{
+        gsap.to(buttonRef.current,
+            {
+                rotation: "360"
+            })
+    },[])
      return (
          <div className="hero pb-5 text-white">
              <nav className="py-3.5 sm:px-32">
@@ -45,21 +56,41 @@ import nftImage from "../../assets/images/image 16.png";
                      </div>
                  </div>
              </nav>
-             <div className="grid grid-cols-2">
+             <div className="grid grid-rows-1 grid-cols-1 md:grid-cols-2 md:grid-rows-1">
                  <div className="flex justify-start pl-14 pt-16 flex-col">
-                     <div className="btn-send_nfts--container">
-                         <div className="btn btn-send_nfts hover:cursor-crosshair w-1/2 py-5 my-2 text-2xl font-bold"> Send NFTs </div>
+                     <div ref={buttonRef} className="btn-send_nfts--container">
+                         <div className="rope_set__init relative w-2/3">
+                             <span className="absolute text-center dot left-8">
+                                <img src={line} className="line mx-auto" alt=""/>
+                                <img src={ellipse} className="ellipse" alt=""/>
+                             </span>
+                             <span className="absolute text-center dot right-8">
+                                <img src={line} className="line mx-auto" alt=""/>
+                                <img src={ellipse} className="ellipse" alt=""/>
+                             </span>
+                         </div>
+                         <div className="btn btn-send_nfts hover:cursor-crosshair w-2/3 py-5 my-2 text-2xl font-bold"> Send NFTs </div>
                      </div>
-                     <div>
-                         <div className="btn btn-send_smiles hover:cursor-crosshair w-1/2 py-5 my-2 text-2xl font-bold"> Send Smiles</div>
+                     <div className="relative">
+                         <div className="rope_set relative w-2/3">
+                             <span className="absolute text-center dot left-3">
+                                <img src={line} className="line mx-auto" alt=""/>
+                                <img src={ellipse} className="ellipse" alt=""/>
+                             </span>
+                             <span className="absolute text-center dot right-3">
+                                <img src={line} className="line mx-auto" alt=""/>
+                                <img src={ellipse} className="ellipse" alt=""/>
+                             </span>
+                         </div>
+                         <div  className="btn btn-send_smiles hover:cursor-crosshair w-2/3 py-5 my-2 text-2xl font-bold"> Send Smiles</div>
                      </div>
-                     <p className="mt-4">
+                     <p className="mt-4 font-medium">
                          Buy NFT art, share and transfer ownership rights and join a community of NFT enthusiasts all for FREE.
                      </p>
-                     <div className="btn hover:cursor-crosshair btn-start-now w-1/3 py-3 mt-6 text-2xl font-bold"> Start Now</div>
+                     <div className="btn hover:cursor-crosshair btn-start-now w-2/4 py-3 mt-6 text-2xl font-bold"> Start Now</div>
                  </div>
-                 <div className="flex justify-center">
-                     <img src={nftImage} className="max-h-96" alt=""/>
+                 <div className="flex md:justify-center justify-end">
+                     <img src={nftImage} className="max-h-99" alt=""/>
                  </div>
              </div>
          </div>
