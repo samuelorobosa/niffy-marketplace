@@ -1,5 +1,5 @@
 import './index.scss';
-import {useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import nftImage from "../../assets/images/image 16.png";
 import ellipse from "../../assets/images/Ellipse 17.png";
 import line from "../../assets/images/Line 3.png";
@@ -7,6 +7,9 @@ import {gsap} from "gsap";
 
 function Hero() {
     const buttonRef = useRef();
+    const buttonRef2 = useRef();
+    const ropeRef = useRef();
+    const ropeRef2 = useRef();
     const[showDropdown, setShowDropdown] = useState(false);
     const toggleDropdown = () => setShowDropdown(!showDropdown);
 
@@ -15,15 +18,31 @@ function Hero() {
         showDropdown ? body.classList.add('overflow-hidden'):body.classList.remove('overflow-hidden')
     },[showDropdown]);
 
+    const tl = gsap.timeline({delay:1});
+
     useEffect(()=>{
-        gsap.to(buttonRef.current,
-            {
-                rotation: "360"
+        tl.to(buttonRef2.current,{
+            y: 0,
+            duration: 1,
+            ease: "elastic.out(1.5, 0.3)"})
+        .to(ropeRef2.current, {
+             opacity: 1
             })
+        .to(buttonRef.current,{
+                y: 0,
+                duration: 1,
+                ease: "bounce.out"})
+        .to(ropeRef.current, {
+                opacity: 1
+            })
+        .to(buttonRef.current,{
+            rotation: -4.42,
+        }, "<")
     },[])
+
     useEffect(()=> {
         overFlowDocument();
-    },[overFlowDocument])
+    },[overFlowDocument]);
 
      return (
          <div className="hero pb-5 text-white">
@@ -67,8 +86,8 @@ function Hero() {
              </nav>
              <div className="grid grid-rows-1 grid-cols-1 md:grid-cols-2 md:grid-rows-1">
                  <div className={`flex justify-start pl-14 pt-16 flex-col ${showDropdown ? '-z-10' : ''}`}>
-                     <div ref={buttonRef} className="btn-send_nfts--container">
-                         <div className="rope_set__init relative w-2/3">
+                     <div className="btn-send_nfts--container">
+                         <div ref={ropeRef} className="rope_set__init relative w-2/3">
                              <span className="absolute text-center dot left-8">
                                 <img src={line} className="line mx-auto" alt=""/>
                                 <img src={ellipse} className="ellipse" alt=""/>
@@ -78,10 +97,10 @@ function Hero() {
                                 <img src={ellipse} className="ellipse" alt=""/>
                              </span>
                          </div>
-                         <div className="btn btn-send_nfts hover:cursor-crosshair w-2/3 py-5 my-2 text-2xl font-bold"> Send NFTs </div>
+                         <div ref={buttonRef} className="btn btn-send_nfts hover:cursor-crosshair w-2/3 py-5 my-2 text-2xl font-bold"> Send NFTs </div>
                      </div>
                      <div className="relative">
-                         <div className="rope_set relative w-2/3">
+                         <div ref={ropeRef2} className="rope_set rope_set__final relative w-2/3">
                              <span className="absolute text-center dot left-3">
                                 <img src={line} className="line mx-auto" alt=""/>
                                 <img src={ellipse} className="ellipse" alt=""/>
@@ -91,7 +110,7 @@ function Hero() {
                                 <img src={ellipse} className="ellipse" alt=""/>
                              </span>
                          </div>
-                         <div  className="btn btn-send_smiles hover:cursor-crosshair w-2/3 py-5 my-2 text-2xl font-bold"> Send Smiles</div>
+                         <div ref={buttonRef2}  className="btn btn-send_smiles hover:cursor-crosshair w-2/3 py-5 my-2 text-2xl font-bold"> Send Smiles</div>
                      </div>
                      <p className="mt-4 font-medium">
                          Buy NFT art, share and transfer ownership rights and join a community of NFT enthusiasts all for FREE.

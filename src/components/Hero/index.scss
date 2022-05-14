@@ -46,11 +46,15 @@
   background: linear-gradient(112.52deg, rgba(255, 255, 255, 0.4) 8.28%, rgba(255, 255, 255, 0.1) 90.82%);
 
   &-send_nfts{
-    transform: rotate(-6.42deg);
+    transform: translateY(-300px);
     &--container{
       position: relative;
       z-index: 100;
     }
+  }
+
+  &-send_smiles{
+    transform: translateY(-300px);
   }
 
   &-start-now{
@@ -65,9 +69,14 @@
 
   &__init{
     transform: translateY(-22rem);
+    opacity: 0;
 
     & span:last-child{
       transform: translateY(-28px);
     }
+  }
+
+  &__final{
+    opacity: 0;
   }
 }
